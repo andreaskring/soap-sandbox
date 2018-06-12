@@ -1,0 +1,16 @@
+appdirs==1.4.3
+cached-property==1.4.2
+certifi==2018.4.16
+chardet==3.0.4
+defusedxml==0.5.0
+idna==2.6
+isodate==0.6.0
+lxml==4.2.1
+pkg-resources==0.0.0
+pytz==2018.4
+requests==2.18.4
+requests-toolbelt==0.8.0
+six==1.11.0
+suds2==0.7.1
+urllib3==1.22
+zeep==2.5.0

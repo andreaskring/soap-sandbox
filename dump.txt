@@ -1,0 +1,330 @@
+
+Prefixes:
+     ns1: http://docs.oasis-open.org/ns/cmis/core/200908/
+     ns2: http://docs.oasis-open.org/ns/cmis/messaging/200908/
+     ns0: http://docs.oasis-open.org/ns/cmis/ws/200908/
+     xsd: http://www.w3.org/2001/XMLSchema
+
+Global elements:
+     ns1:acl(ns1:cmisAccessControlListType)
+     ns1:allowableActions(ns1:cmisAllowableActionsType)
+     ns1:query(ns1:cmisQueryType)
+     ns2:addObjectToFolder(repositoryId: xsd:string, objectId: xsd:string, folderId: xsd:string, allVersions: xsd:boolean, extension: ns2:cmisExtensionType)
+     ns2:addObjectToFolderResponse(extension: ns2:cmisExtensionType)
+     ns2:applyACL(repositoryId: xsd:string, objectId: xsd:string, addACEs: ns1:cmisAccessControlListType, removeACEs: ns1:cmisAccessControlListType, ACLPropagation: ns1:enumACLPropagation, extension: ns2:cmisExtensionType)
+     ns2:applyACLResponse(ACL: ns2:cmisACLType)
+     ns2:applyPolicy(repositoryId: xsd:string, policyId: xsd:string, objectId: xsd:string, extension: ns2:cmisExtensionType)
+     ns2:applyPolicyResponse(extension: ns2:cmisExtensionType)
+     ns2:cancelCheckOut(repositoryId: xsd:string, objectId: xsd:string, extension: ns2:cmisExtensionType)
+     ns2:cancelCheckOutResponse(extension: ns2:cmisExtensionType)
+     ns2:checkIn(repositoryId: xsd:string, objectId: xsd:string, major: xsd:boolean, properties: ns1:cmisPropertiesType, contentStream: ns2:cmisContentStreamType, checkinComment: xsd:string, policies: xsd:string[], addACEs: ns1:cmisAccessControlListType, removeACEs: ns1:cmisAccessControlListType, extension: ns2:cmisExtensionType)
+     ns2:checkInResponse(objectId: xsd:string, extension: ns2:cmisExtensionType)
+     ns2:checkOut(repositoryId: xsd:string, objectId: xsd:string, extension: ns2:cmisExtensionType)
+     ns2:checkOutResponse(objectId: xsd:string, contentCopied: xsd:boolean, extension: ns2:cmisExtensionType)
+     ns2:cmisFault(ns2:cmisFaultType)
+     ns2:createDocument(repositoryId: xsd:string, properties: ns1:cmisPropertiesType, folderId: xsd:string, contentStream: ns2:cmisContentStreamType, versioningState: ns1:enumVersioningState, policies: xsd:string[], addACEs: ns1:cmisAccessControlListType, removeACEs: ns1:cmisAccessControlListType, extension: ns2:cmisExtensionType)
+     ns2:createDocumentFromSource(repositoryId: xsd:string, sourceId: xsd:string, properties: ns1:cmisPropertiesType, folderId: xsd:string, versioningState: ns1:enumVersioningState, policies: xsd:string[], addACEs: ns1:cmisAccessControlListType, removeACEs: ns1:cmisAccessControlListType, extension: ns2:cmisExtensionType)
+     ns2:createDocumentFromSourceResponse(objectId: xsd:string, extension: ns2:cmisExtensionType)
+     ns2:createDocumentResponse(objectId: xsd:string, extension: ns2:cmisExtensionType)
+     ns2:createFolder(repositoryId: xsd:string, properties: ns1:cmisPropertiesType, folderId: xsd:string, policies: xsd:string[], addACEs: ns1:cmisAccessControlListType, removeACEs: ns1:cmisAccessControlListType, extension: ns2:cmisExtensionType)
+     ns2:createFolderResponse(objectId: xsd:string, extension: ns2:cmisExtensionType)
+     ns2:createPolicy(repositoryId: xsd:string, properties: ns1:cmisPropertiesType, folderId: xsd:string, policies: xsd:string[], addACEs: ns1:cmisAccessControlListType, removeACEs: ns1:cmisAccessControlListType, extension: ns2:cmisExtensionType)
+     ns2:createPolicyResponse(objectId: xsd:string, extension: ns2:cmisExtensionType)
+     ns2:createRelationship(repositoryId: xsd:string, properties: ns1:cmisPropertiesType, policies: xsd:string[], addACEs: ns1:cmisAccessControlListType, removeACEs: ns1:cmisAccessControlListType, extension: ns2:cmisExtensionType)
+     ns2:createRelationshipResponse(objectId: xsd:string, extension: ns2:cmisExtensionType)
+     ns2:deleteContentStream(repositoryId: xsd:string, objectId: xsd:string, changeToken: xsd:string, extension: ns2:cmisExtensionType)
+     ns2:deleteContentStreamResponse(objectId: xsd:string, changeToken: xsd:string, extension: ns2:cmisExtensionType)
+     ns2:deleteObject(repositoryId: xsd:string, objectId: xsd:string, allVersions: xsd:boolean, extension: ns2:cmisExtensionType)
+     ns2:deleteObjectResponse(extension: ns2:cmisExtensionType)
+     ns2:deleteTree(repositoryId: xsd:string, folderId: xsd:string, allVersions: xsd:boolean, unfileObjects: ns1:enumUnfileObject, continueOnFailure: xsd:boolean, extension: ns2:cmisExtensionType)
+     ns2:deleteTreeResponse(failedToDelete: {objectIds: xsd:string[], _value_1: ANY[]})
+     ns2:getACL(repositoryId: xsd:string, objectId: xsd:string, onlyBasicPermissions: xsd:boolean, extension: ns2:cmisExtensionType)
+     ns2:getACLResponse(ACL: ns2:cmisACLType)
+     ns2:getAllVersions(repositoryId: xsd:string, objectId: xsd:string, filter: xsd:string, includeAllowableActions: xsd:boolean, extension: ns2:cmisExtensionType)
+     ns2:getAllVersionsResponse(objects: ns1:cmisObjectType[])
+     ns2:getAllowableActions(repositoryId: xsd:string, objectId: xsd:string, extension: ns2:cmisExtensionType)
+     ns2:getAllowableActionsResponse(allowableActions: ns1:cmisAllowableActionsType)
+     ns2:getAppliedPolicies(repositoryId: xsd:string, objectId: xsd:string, filter: xsd:string, extension: ns2:cmisExtensionType)
+     ns2:getAppliedPoliciesResponse(objects: ns1:cmisObjectType[])
+     ns2:getCheckedOutDocs(repositoryId: xsd:string, folderId: xsd:string, filter: xsd:string, orderBy: xsd:string, includeAllowableActions: xsd:boolean, includeRelationships: ns1:enumIncludeRelationships, renditionFilter: xsd:string, maxItems: xsd:integer, skipCount: xsd:integer, extension: ns2:cmisExtensionType)
+     ns2:getCheckedOutDocsResponse(objects: ns2:cmisObjectListType)
+     ns2:getChildren(repositoryId: xsd:string, folderId: xsd:string, filter: xsd:string, orderBy: xsd:string, includeAllowableActions: xsd:boolean, includeRelationships: ns1:enumIncludeRelationships, renditionFilter: xsd:string, includePathSegment: xsd:boolean, maxItems: xsd:integer, skipCount: xsd:integer, extension: ns2:cmisExtensionType)
+     ns2:getChildrenResponse(objects: ns2:cmisObjectInFolderListType)
+     ns2:getContentChanges(repositoryId: xsd:string, changeLogToken: xsd:string, includeProperties: xsd:boolean, filter: xsd:string, includePolicyIds: xsd:boolean, includeACL: xsd:boolean, maxItems: xsd:integer, extension: ns2:cmisExtensionType)
+     ns2:getContentChangesResponse(objects: ns2:cmisObjectListType, changeLogToken: xsd:string)
+     ns2:getContentStream(repositoryId: xsd:string, objectId: xsd:string, streamId: xsd:string, offset: xsd:integer, length: xsd:integer, extension: ns2:cmisExtensionType)
+     ns2:getContentStreamResponse(contentStream: ns2:cmisContentStreamType)
+     ns2:getDescendants(repositoryId: xsd:string, folderId: xsd:string, depth: xsd:integer, filter: xsd:string, includeAllowableActions: xsd:boolean, includeRelationships: ns1:enumIncludeRelationships, renditionFilter: xsd:string, includePathSegment: xsd:boolean, extension: ns2:cmisExtensionType)
+     ns2:getDescendantsResponse(objects: ns2:cmisObjectInFolderContainerType[])
+     ns2:getFolderParent(repositoryId: xsd:string, folderId: xsd:string, filter: xsd:string, extension: ns2:cmisExtensionType)
+     ns2:getFolderParentResponse(object: ns1:cmisObjectType)
+     ns2:getFolderTree(repositoryId: xsd:string, folderId: xsd:string, depth: xsd:integer, filter: xsd:string, includeAllowableActions: xsd:boolean, includeRelationships: ns1:enumIncludeRelationships, renditionFilter: xsd:string, includePathSegment: xsd:boolean, extension: ns2:cmisExtensionType)
+     ns2:getFolderTreeResponse(objects: ns2:cmisObjectInFolderContainerType[])
+     ns2:getObject(repositoryId: xsd:string, objectId: xsd:string, filter: xsd:string, includeAllowableActions: xsd:boolean, includeRelationships: ns1:enumIncludeRelationships, renditionFilter: xsd:string, includePolicyIds: xsd:boolean, includeACL: xsd:boolean, extension: ns2:cmisExtensionType)
+     ns2:getObjectByPath(repositoryId: xsd:string, path: xsd:string, filter: xsd:string, includeAllowableActions: xsd:boolean, includeRelationships: ns1:enumIncludeRelationships, renditionFilter: xsd:string, includePolicyIds: xsd:boolean, includeACL: xsd:boolean, extension: ns2:cmisExtensionType)
+     ns2:getObjectByPathResponse(object: ns1:cmisObjectType)
+     ns2:getObjectOfLatestVersion(repositoryId: xsd:string, objectId: xsd:string, major: xsd:boolean, filter: xsd:string, includeAllowableActions: xsd:boolean, includeRelationships: ns1:enumIncludeRelationships, renditionFilter: xsd:string, includePolicyIds: xsd:boolean, includeACL: xsd:boolean, extension: ns2:cmisExtensionType)
+     ns2:getObjectOfLatestVersionResponse(object: ns1:cmisObjectType)
+     ns2:getObjectParents(repositoryId: xsd:string, objectId: xsd:string, filter: xsd:string, includeAllowableActions: xsd:boolean, includeRelationships: ns1:enumIncludeRelationships, renditionFilter: xsd:string, includeRelativePathSegment: xsd:boolean, extension: ns2:cmisExtensionType)
+     ns2:getObjectParentsResponse(parents: ns2:cmisObjectParentsType[])
+     ns2:getObjectRelationships(repositoryId: xsd:string, objectId: xsd:string, includeSubRelationshipTypes: xsd:boolean, relationshipDirection: ns1:enumRelationshipDirection, typeId: xsd:string, filter: xsd:string, includeAllowableActions: xsd:boolean, maxItems: xsd:integer, skipCount: xsd:integer, extension: ns2:cmisExtensionType)
+     ns2:getObjectRelationshipsResponse(objects: ns2:cmisObjectListType)
+     ns2:getObjectResponse(object: ns1:cmisObjectType)
+     ns2:getProperties(repositoryId: xsd:string, objectId: xsd:string, filter: xsd:string, extension: ns2:cmisExtensionType)
+     ns2:getPropertiesOfLatestVersion(repositoryId: xsd:string, objectId: xsd:string, major: xsd:boolean, filter: xsd:string, extension: ns2:cmisExtensionType)
+     ns2:getPropertiesOfLatestVersionResponse(properties: ns1:cmisPropertiesType)
+     ns2:getPropertiesResponse(properties: ns1:cmisPropertiesType)
+     ns2:getRenditions(repositoryId: xsd:string, objectId: xsd:string, renditionFilter: xsd:string, maxItems: xsd:integer, skipCount: xsd:integer, extension: ns2:cmisExtensionType)
+     ns2:getRenditionsResponse(renditions: ns1:cmisRenditionType[])
+     ns2:getRepositories(extension: ns2:cmisExtensionType)
+     ns2:getRepositoriesResponse(repositories: ns2:cmisRepositoryEntryType[])
+     ns2:getRepositoryInfo(repositoryId: xsd:string, extension: ns2:cmisExtensionType)
+     ns2:getRepositoryInfoResponse(repositoryInfo: ns1:cmisRepositoryInfoType)
+     ns2:getTypeChildren(repositoryId: xsd:string, typeId: xsd:string, includePropertyDefinitions: xsd:boolean, maxItems: xsd:integer, skipCount: xsd:integer, extension: ns2:cmisExtensionType)
+     ns2:getTypeChildrenResponse(types: ns2:cmisTypeDefinitionListType)
+     ns2:getTypeDefinition(repositoryId: xsd:string, typeId: xsd:string, extension: ns2:cmisExtensionType)
+     ns2:getTypeDefinitionResponse(type: ns1:cmisTypeDefinitionType)
+     ns2:getTypeDescendants(repositoryId: xsd:string, typeId: xsd:string, depth: xsd:integer, includePropertyDefinitions: xsd:boolean, extension: ns2:cmisExtensionType)
+     ns2:getTypeDescendantsResponse(types: ns2:cmisTypeContainer[])
+     ns2:moveObject(repositoryId: xsd:string, objectId: xsd:string, targetFolderId: xsd:string, sourceFolderId: xsd:string, extension: ns2:cmisExtensionType)
+     ns2:moveObjectResponse(objectId: xsd:string, extension: ns2:cmisExtensionType)
+     ns2:query(repositoryId: xsd:string, statement: xsd:string, searchAllVersions: xsd:boolean, includeAllowableActions: xsd:boolean, includeRelationships: ns1:enumIncludeRelationships, renditionFilter: xsd:string, maxItems: xsd:integer, skipCount: xsd:integer, extension: ns2:cmisExtensionType, _attr_1: {})
+     ns2:queryResponse(objects: ns2:cmisObjectListType)
+     ns2:removeObjectFromFolder(repositoryId: xsd:string, objectId: xsd:string, folderId: xsd:string, extension: ns2:cmisExtensionType)
+     ns2:removeObjectFromFolderResponse(extension: ns2:cmisExtensionType)
+     ns2:removePolicy(repositoryId: xsd:string, policyId: xsd:string, objectId: xsd:string, extension: ns2:cmisExtensionType)
+     ns2:removePolicyResponse(extension: ns2:cmisExtensionType)
+     ns2:setContentStream(repositoryId: xsd:string, objectId: xsd:string, overwriteFlag: xsd:boolean, changeToken: xsd:string, contentStream: ns2:cmisContentStreamType, extension: ns2:cmisExtensionType)
+     ns2:setContentStreamResponse(objectId: xsd:string, changeToken: xsd:string, extension: ns2:cmisExtensionType)
+     ns2:updateProperties(repositoryId: xsd:string, objectId: xsd:string, changeToken: xsd:string, properties: ns1:cmisPropertiesType, extension: ns2:cmisExtensionType)
+     ns2:updatePropertiesResponse(objectId: xsd:string, changeToken: xsd:string, extension: ns2:cmisExtensionType)
+     
+
+Global types:
+     xsd:anyType
+     ns1:cmisACLCapabilityType(supportedPermissions: ns1:enumSupportedPermissions, propagation: ns1:enumACLPropagation, permissions: ns1:cmisPermissionDefinition[], mapping: ns1:cmisPermissionMapping[])
+     ns1:cmisAccessControlEntryType(principal: ns1:cmisAccessControlPrincipalType, permission: xsd:string[], direct: xsd:boolean, _value_1: ANY[])
+     ns1:cmisAccessControlListType(permission: ns1:cmisAccessControlEntryType[], _value_1: ANY[])
+     ns1:cmisAccessControlPrincipalType(principalId: xsd:string, _value_1: ANY[])
+     ns1:cmisAllowableActionsType(canDeleteObject: xsd:boolean, canUpdateProperties: xsd:boolean, canGetFolderTree: xsd:boolean, canGetProperties: xsd:boolean, canGetObjectRelationships: xsd:boolean, canGetObjectParents: xsd:boolean, canGetFolderParent: xsd:boolean, canGetDescendants: xsd:boolean, canMoveObject: xsd:boolean, canDeleteContentStream: xsd:boolean, canCheckOut: xsd:boolean, canCancelCheckOut: xsd:boolean, canCheckIn: xsd:boolean, canSetContentStream: xsd:boolean, canGetAllVersions: xsd:boolean, canAddObjectToFolder: xsd:boolean, canRemoveObjectFromFolder: xsd:boolean, canGetContentStream: xsd:boolean, canApplyPolicy: xsd:boolean, canGetAppliedPolicies: xsd:boolean, canRemovePolicy: xsd:boolean, canGetChildren: xsd:boolean, canCreateDocument: xsd:boolean, canCreateFolder: xsd:boolean, canCreateRelationship: xsd:boolean, canDeleteTree: xsd:boolean, canGetRenditions: xsd:boolean, canGetACL: xsd:boolean, canApplyACL: xsd:boolean, _value_1: ANY[], _attr_1: {})
+     ns1:cmisChangeEventType(changeType: ns1:enumTypeOfChanges, changeTime: xsd:dateTime, _value_1: ANY[])
+     ns1:cmisChoice(displayName: xsd:anyType, _attr_1: {})
+     ns1:cmisChoiceBoolean(value: xsd:boolean[], choice: ns1:cmisChoiceBoolean[], displayName: xsd:anyType, _attr_1: {})
+     ns1:cmisChoiceDateTime(value: xsd:dateTime[], choice: ns1:cmisChoiceDateTime[], displayName: xsd:anyType, _attr_1: {})
+     ns1:cmisChoiceDecimal(value: xsd:decimal[], choice: ns1:cmisChoiceDecimal[], displayName: xsd:anyType, _attr_1: {})
+     ns1:cmisChoiceHtml(value: xsd:string[], choice: ns1:cmisChoiceHtml[], displayName: xsd:anyType, _attr_1: {})
+     ns1:cmisChoiceId(value: xsd:string[], choice: ns1:cmisChoiceId[], displayName: xsd:anyType, _attr_1: {})
+     ns1:cmisChoiceInteger(value: xsd:integer[], choice: ns1:cmisChoiceInteger[], displayName: xsd:anyType, _attr_1: {})
+     ns1:cmisChoiceString(value: xsd:string[], choice: ns1:cmisChoiceString[], displayName: xsd:anyType, _attr_1: {})
+     ns1:cmisChoiceUri(value: xsd:anyURI[], choice: ns1:cmisChoiceUri[], displayName: xsd:anyType, _attr_1: {})
+     ns1:cmisListOfIdsType(id: xsd:string[], _value_1: ANY[], _attr_1: {})
+     ns1:cmisObjectType(properties: ns1:cmisPropertiesType, allowableActions: ns1:cmisAllowableActionsType, relationship: ns1:cmisObjectType[], changeEventInfo: ns1:cmisChangeEventType, acl: ns1:cmisAccessControlListType, exactACL: xsd:boolean, policyIds: ns1:cmisListOfIdsType, rendition: ns1:cmisRenditionType[], _value_1: ANY[], _attr_1: {})
+     ns1:cmisPermissionDefinition(permission: xsd:string, description: xsd:string, _value_1: ANY[])
+     ns1:cmisPermissionMapping(key: ns1:enumAllowableActionsKey, permission: xsd:string[], _value_1: ANY[])
+     ns1:cmisPropertiesType(({propertyBoolean: ns1:cmisPropertyBoolean} | {propertyId: ns1:cmisPropertyId} | {propertyInteger: ns1:cmisPropertyInteger} | {propertyDateTime: ns1:cmisPropertyDateTime} | {propertyDecimal: ns1:cmisPropertyDecimal} | {propertyHtml: ns1:cmisPropertyHtml} | {propertyString: ns1:cmisPropertyString} | {propertyUri: ns1:cmisPropertyUri})[], _value_2: ANY[], _attr_1: {})
+     ns1:cmisProperty(propertyDefinitionId: xsd:anyType, localName: xsd:anyType, displayName: xsd:anyType, queryName: xsd:anyType, _attr_1: {})
+     ns1:cmisPropertyBoolean(value: xsd:boolean[], _value_1: ANY[], propertyDefinitionId: xsd:anyType, localName: xsd:anyType, displayName: xsd:anyType, queryName: xsd:anyType, _attr_1: {})
+     ns1:cmisPropertyBooleanDefinitionType(id: xsd:string, localName: xsd:string, localNamespace: xsd:anyURI, displayName: xsd:string, queryName: xsd:string, description: xsd:string, propertyType: ns1:enumPropertyType, cardinality: ns1:enumCardinality, updatability: ns1:enumUpdatability, inherited: xsd:boolean, required: xsd:boolean, queryable: xsd:boolean, orderable: xsd:boolean, openChoice: xsd:boolean, _value_1: ANY[], defaultValue: ns1:cmisPropertyBoolean, choice: ns1:cmisChoiceBoolean[], _attr_1: {})
+     ns1:cmisPropertyDateTime(value: xsd:dateTime[], _value_1: ANY[], propertyDefinitionId: xsd:anyType, localName: xsd:anyType, displayName: xsd:anyType, queryName: xsd:anyType, _attr_1: {})
+     ns1:cmisPropertyDateTimeDefinitionType(id: xsd:string, localName: xsd:string, localNamespace: xsd:anyURI, displayName: xsd:string, queryName: xsd:string, description: xsd:string, propertyType: ns1:enumPropertyType, cardinality: ns1:enumCardinality, updatability: ns1:enumUpdatability, inherited: xsd:boolean, required: xsd:boolean, queryable: xsd:boolean, orderable: xsd:boolean, openChoice: xsd:boolean, _value_1: ANY[], defaultValue: ns1:cmisPropertyDateTime, resolution: ns1:enumDateTimeResolution, choice: ns1:cmisChoiceDateTime[], _attr_1: {})
+     ns1:cmisPropertyDecimal(value: xsd:decimal[], _value_1: ANY[], propertyDefinitionId: xsd:anyType, localName: xsd:anyType, displayName: xsd:anyType, queryName: xsd:anyType, _attr_1: {})
+     ns1:cmisPropertyDecimalDefinitionType(id: xsd:string, localName: xsd:string, localNamespace: xsd:anyURI, displayName: xsd:string, queryName: xsd:string, description: xsd:string, propertyType: ns1:enumPropertyType, cardinality: ns1:enumCardinality, updatability: ns1:enumUpdatability, inherited: xsd:boolean, required: xsd:boolean, queryable: xsd:boolean, orderable: xsd:boolean, openChoice: xsd:boolean, _value_1: ANY[], defaultValue: ns1:cmisPropertyDecimal, maxValue: xsd:decimal, minValue: xsd:decimal, precision: ns1:enumDecimalPrecision, choice: ns1:cmisChoiceDecimal[], _attr_1: {})
+     ns1:cmisPropertyDefinitionType(id: xsd:string, localName: xsd:string, localNamespace: xsd:anyURI, displayName: xsd:string, queryName: xsd:string, description: xsd:string, propertyType: ns1:enumPropertyType, cardinality: ns1:enumCardinality, updatability: ns1:enumUpdatability, inherited: xsd:boolean, required: xsd:boolean, queryable: xsd:boolean, orderable: xsd:boolean, openChoice: xsd:boolean, _value_1: ANY[], _attr_1: {})
+     ns1:cmisPropertyHtml(value: xsd:string[], _value_1: ANY[], propertyDefinitionId: xsd:anyType, localName: xsd:anyType, displayName: xsd:anyType, queryName: xsd:anyType, _attr_1: {})
+     ns1:cmisPropertyHtmlDefinitionType(id: xsd:string, localName: xsd:string, localNamespace: xsd:anyURI, displayName: xsd:string, queryName: xsd:string, description: xsd:string, propertyType: ns1:enumPropertyType, cardinality: ns1:enumCardinality, updatability: ns1:enumUpdatability, inherited: xsd:boolean, required: xsd:boolean, queryable: xsd:boolean, orderable: xsd:boolean, openChoice: xsd:boolean, _value_1: ANY[], defaultValue: ns1:cmisPropertyHtml, choice: ns1:cmisChoiceHtml[], _attr_1: {})
+     ns1:cmisPropertyId(value: xsd:string[], _value_1: ANY[], propertyDefinitionId: xsd:anyType, localName: xsd:anyType, displayName: xsd:anyType, queryName: xsd:anyType, _attr_1: {})
+     ns1:cmisPropertyIdDefinitionType(id: xsd:string, localName: xsd:string, localNamespace: xsd:anyURI, displayName: xsd:string, queryName: xsd:string, description: xsd:string, propertyType: ns1:enumPropertyType, cardinality: ns1:enumCardinality, updatability: ns1:enumUpdatability, inherited: xsd:boolean, required: xsd:boolean, queryable: xsd:boolean, orderable: xsd:boolean, openChoice: xsd:boolean, _value_1: ANY[], defaultValue: ns1:cmisPropertyId, choice: ns1:cmisChoiceId[], _attr_1: {})
+     ns1:cmisPropertyInteger(value: xsd:integer[], _value_1: ANY[], propertyDefinitionId: xsd:anyType, localName: xsd:anyType, displayName: xsd:anyType, queryName: xsd:anyType, _attr_1: {})
+     ns1:cmisPropertyIntegerDefinitionType(id: xsd:string, localName: xsd:string, localNamespace: xsd:anyURI, displayName: xsd:string, queryName: xsd:string, description: xsd:string, propertyType: ns1:enumPropertyType, cardinality: ns1:enumCardinality, updatability: ns1:enumUpdatability, inherited: xsd:boolean, required: xsd:boolean, queryable: xsd:boolean, orderable: xsd:boolean, openChoice: xsd:boolean, _value_1: ANY[], defaultValue: ns1:cmisPropertyInteger, maxValue: xsd:integer, minValue: xsd:integer, choice: ns1:cmisChoiceInteger[], _attr_1: {})
+     ns1:cmisPropertyString(value: xsd:string[], _value_1: ANY[], propertyDefinitionId: xsd:anyType, localName: xsd:anyType, displayName: xsd:anyType, queryName: xsd:anyType, _attr_1: {})
+     ns1:cmisPropertyStringDefinitionType(id: xsd:string, localName: xsd:string, localNamespace: xsd:anyURI, displayName: xsd:string, queryName: xsd:string, description: xsd:string, propertyType: ns1:enumPropertyType, cardinality: ns1:enumCardinality, updatability: ns1:enumUpdatability, inherited: xsd:boolean, required: xsd:boolean, queryable: xsd:boolean, orderable: xsd:boolean, openChoice: xsd:boolean, _value_1: ANY[], defaultValue: ns1:cmisPropertyString, maxLength: xsd:integer, choice: ns1:cmisChoiceString[], _attr_1: {})
+     ns1:cmisPropertyUri(value: xsd:anyURI[], _value_1: ANY[], propertyDefinitionId: xsd:anyType, localName: xsd:anyType, displayName: xsd:anyType, queryName: xsd:anyType, _attr_1: {})
+     ns1:cmisPropertyUriDefinitionType(id: xsd:string, localName: xsd:string, localNamespace: xsd:anyURI, displayName: xsd:string, queryName: xsd:string, description: xsd:string, propertyType: ns1:enumPropertyType, cardinality: ns1:enumCardinality, updatability: ns1:enumUpdatability, inherited: xsd:boolean, required: xsd:boolean, queryable: xsd:boolean, orderable: xsd:boolean, openChoice: xsd:boolean, _value_1: ANY[], defaultValue: ns1:cmisPropertyUri, choice: ns1:cmisChoiceUri[], _attr_1: {})
+     ns1:cmisQueryType(statement: xsd:string, searchAllVersions: xsd:boolean, includeAllowableActions: xsd:boolean, includeRelationships: ns1:enumIncludeRelationships, renditionFilter: xsd:string, maxItems: xsd:integer, skipCount: xsd:integer, _value_1: ANY[], _attr_1: {})
+     ns1:cmisRenditionType(streamId: xsd:string, mimetype: xsd:string, length: xsd:integer, kind: xsd:string, title: xsd:string, height: xsd:integer, width: xsd:integer, renditionDocumentId: xsd:string, _value_1: ANY[])
+     ns1:cmisRepositoryCapabilitiesType(capabilityACL: ns1:enumCapabilityACL, capabilityAllVersionsSearchable: xsd:boolean, capabilityChanges: ns1:enumCapabilityChanges, capabilityContentStreamUpdatability: ns1:enumCapabilityContentStreamUpdates, capabilityGetDescendants: xsd:boolean, capabilityGetFolderTree: xsd:boolean, capabilityMultifiling: xsd:boolean, capabilityPWCSearchable: xsd:boolean, capabilityPWCUpdatable: xsd:boolean, capabilityQuery: ns1:enumCapabilityQuery, capabilityRenditions: ns1:enumCapabilityRendition, capabilityUnfiling: xsd:boolean, capabilityVersionSpecificFiling: xsd:boolean, capabilityJoin: ns1:enumCapabilityJoin, _value_1: ANY[], _attr_1: {})
+     ns1:cmisRepositoryInfoType(repositoryId: xsd:string, repositoryName: xsd:string, repositoryDescription: xsd:string, vendorName: xsd:string, productName: xsd:string, productVersion: xsd:string, rootFolderId: xsd:string, latestChangeLogToken: xsd:string, capabilities: ns1:cmisRepositoryCapabilitiesType, aclCapability: ns1:cmisACLCapabilityType, cmisVersionSupported: xsd:string, thinClientURI: xsd:anyURI, changesIncomplete: xsd:boolean, changesOnType: ns1:enumBaseObjectTypeIds[], principalAnonymous: xsd:string, principalAnyone: xsd:string, _value_1: ANY[], _attr_1: {})
+     ns1:cmisTypeDefinitionType(id: xsd:string, localName: xsd:string, localNamespace: xsd:anyURI, displayName: xsd:string, queryName: xsd:string, description: xsd:string, baseId: ns1:enumBaseObjectTypeIds, parentId: xsd:string, creatable: xsd:boolean, fileable: xsd:boolean, queryable: xsd:boolean, fulltextIndexed: xsd:boolean, includedInSupertypeQuery: xsd:boolean, controllablePolicy: xsd:boolean, controllableACL: xsd:boolean, ({propertyBooleanDefinition: ns1:cmisPropertyBooleanDefinitionType} | {propertyDateTimeDefinition: ns1:cmisPropertyDateTimeDefinitionType} | {propertyDecimalDefinition: ns1:cmisPropertyDecimalDefinitionType} | {propertyIdDefinition: ns1:cmisPropertyIdDefinitionType} | {propertyIntegerDefinition: ns1:cmisPropertyIntegerDefinitionType} | {propertyHtmlDefinition: ns1:cmisPropertyHtmlDefinitionType} | {propertyStringDefinition: ns1:cmisPropertyStringDefinitionType} | {propertyUriDefinition: ns1:cmisPropertyUriDefinitionType})[], _value_2: ANY[], _attr_1: {})
+     ns1:cmisTypeDocumentDefinitionType(id: xsd:string, localName: xsd:string, localNamespace: xsd:anyURI, displayName: xsd:string, queryName: xsd:string, description: xsd:string, baseId: ns1:enumBaseObjectTypeIds, parentId: xsd:string, creatable: xsd:boolean, fileable: xsd:boolean, queryable: xsd:boolean, fulltextIndexed: xsd:boolean, includedInSupertypeQuery: xsd:boolean, controllablePolicy: xsd:boolean, controllableACL: xsd:boolean, ({propertyBooleanDefinition: ns1:cmisPropertyBooleanDefinitionType} | {propertyDateTimeDefinition: ns1:cmisPropertyDateTimeDefinitionType} | {propertyDecimalDefinition: ns1:cmisPropertyDecimalDefinitionType} | {propertyIdDefinition: ns1:cmisPropertyIdDefinitionType} | {propertyIntegerDefinition: ns1:cmisPropertyIntegerDefinitionType} | {propertyHtmlDefinition: ns1:cmisPropertyHtmlDefinitionType} | {propertyStringDefinition: ns1:cmisPropertyStringDefinitionType} | {propertyUriDefinition: ns1:cmisPropertyUriDefinitionType})[], _value_2: ANY[], versionable: xsd:boolean, contentStreamAllowed: ns1:enumContentStreamAllowed, _attr_1: {})
+     ns1:cmisTypeFolderDefinitionType(id: xsd:string, localName: xsd:string, localNamespace: xsd:anyURI, displayName: xsd:string, queryName: xsd:string, description: xsd:string, baseId: ns1:enumBaseObjectTypeIds, parentId: xsd:string, creatable: xsd:boolean, fileable: xsd:boolean, queryable: xsd:boolean, fulltextIndexed: xsd:boolean, includedInSupertypeQuery: xsd:boolean, controllablePolicy: xsd:boolean, controllableACL: xsd:boolean, ({propertyBooleanDefinition: ns1:cmisPropertyBooleanDefinitionType} | {propertyDateTimeDefinition: ns1:cmisPropertyDateTimeDefinitionType} | {propertyDecimalDefinition: ns1:cmisPropertyDecimalDefinitionType} | {propertyIdDefinition: ns1:cmisPropertyIdDefinitionType} | {propertyIntegerDefinition: ns1:cmisPropertyIntegerDefinitionType} | {propertyHtmlDefinition: ns1:cmisPropertyHtmlDefinitionType} | {propertyStringDefinition: ns1:cmisPropertyStringDefinitionType} | {propertyUriDefinition: ns1:cmisPropertyUriDefinitionType})[], _value_2: ANY[], _attr_1: {})
+     ns1:cmisTypePolicyDefinitionType(id: xsd:string, localName: xsd:string, localNamespace: xsd:anyURI, displayName: xsd:string, queryName: xsd:string, description: xsd:string, baseId: ns1:enumBaseObjectTypeIds, parentId: xsd:string, creatable: xsd:boolean, fileable: xsd:boolean, queryable: xsd:boolean, fulltextIndexed: xsd:boolean, includedInSupertypeQuery: xsd:boolean, controllablePolicy: xsd:boolean, controllableACL: xsd:boolean, ({propertyBooleanDefinition: ns1:cmisPropertyBooleanDefinitionType} | {propertyDateTimeDefinition: ns1:cmisPropertyDateTimeDefinitionType} | {propertyDecimalDefinition: ns1:cmisPropertyDecimalDefinitionType} | {propertyIdDefinition: ns1:cmisPropertyIdDefinitionType} | {propertyIntegerDefinition: ns1:cmisPropertyIntegerDefinitionType} | {propertyHtmlDefinition: ns1:cmisPropertyHtmlDefinitionType} | {propertyStringDefinition: ns1:cmisPropertyStringDefinitionType} | {propertyUriDefinition: ns1:cmisPropertyUriDefinitionType})[], _value_2: ANY[], _attr_1: {})
+     ns1:cmisTypeRelationshipDefinitionType(id: xsd:string, localName: xsd:string, localNamespace: xsd:anyURI, displayName: xsd:string, queryName: xsd:string, description: xsd:string, baseId: ns1:enumBaseObjectTypeIds, parentId: xsd:string, creatable: xsd:boolean, fileable: xsd:boolean, queryable: xsd:boolean, fulltextIndexed: xsd:boolean, includedInSupertypeQuery: xsd:boolean, controllablePolicy: xsd:boolean, controllableACL: xsd:boolean, ({propertyBooleanDefinition: ns1:cmisPropertyBooleanDefinitionType} | {propertyDateTimeDefinition: ns1:cmisPropertyDateTimeDefinitionType} | {propertyDecimalDefinition: ns1:cmisPropertyDecimalDefinitionType} | {propertyIdDefinition: ns1:cmisPropertyIdDefinitionType} | {propertyIntegerDefinition: ns1:cmisPropertyIntegerDefinitionType} | {propertyHtmlDefinition: ns1:cmisPropertyHtmlDefinitionType} | {propertyStringDefinition: ns1:cmisPropertyStringDefinitionType} | {propertyUriDefinition: ns1:cmisPropertyUriDefinitionType})[], _value_2: ANY[], allowedSourceTypes: xsd:string[], allowedTargetTypes: xsd:string[], _attr_1: {})
+     ns1:enumACLPropagation
+     ns1:enumAllowableActionsKey
+     ns1:enumBaseObjectTypeIds
+     ns1:enumBasicPermissions
+     ns1:enumCapabilityACL
+     ns1:enumCapabilityChanges
+     ns1:enumCapabilityContentStreamUpdates
+     ns1:enumCapabilityJoin
+     ns1:enumCapabilityQuery
+     ns1:enumCapabilityRendition
+     ns1:enumCardinality
+     ns1:enumContentStreamAllowed
+     ns1:enumDateTimeResolution
+     ns1:enumDecimalPrecision
+     ns1:enumIncludeRelationships
+     ns1:enumPropertiesBase
+     ns1:enumPropertiesDocument
+     ns1:enumPropertiesFolder
+     ns1:enumPropertiesPolicy
+     ns1:enumPropertiesRelationship
+     ns1:enumPropertyType
+     ns1:enumRelationshipDirection
+     ns1:enumRenditionKind
+     ns1:enumSupportedPermissions
+     ns1:enumTypeOfChanges
+     ns1:enumUnfileObject
+     ns1:enumUpdatability
+     ns1:enumUsers
+     ns1:enumVersioningState
+     ns2:cmisACLType(ACL: ns1:cmisAccessControlListType, exact: xsd:boolean, _value_1: ANY[], _attr_1: {})
+     ns2:cmisContentStreamType(length: xsd:integer, mimeType: xsd:string, filename: xsd:string, stream: xsd:base64Binary, _value_1: ANY[], _attr_1: {})
+     ns2:cmisExtensionType(_value_1: ANY[])
+     ns2:cmisFaultType(type: ns2:enumServiceException, code: xsd:integer, message: xsd:string, _value_1: ANY[])
+     ns2:cmisObjectInFolderContainerType(objectInFolder: ns2:cmisObjectInFolderType, children: ns2:cmisObjectInFolderContainerType[], _value_1: ANY[], _attr_1: {})
+     ns2:cmisObjectInFolderListType(objects: ns2:cmisObjectInFolderType[], hasMoreItems: xsd:boolean, numItems: xsd:integer, _value_1: ANY[], _attr_1: {})
+     ns2:cmisObjectInFolderType(object: ns1:cmisObjectType, pathSegment: xsd:string, _value_1: ANY[], _attr_1: {})
+     ns2:cmisObjectListType(objects: ns1:cmisObjectType[], hasMoreItems: xsd:boolean, numItems: xsd:integer, _value_1: ANY[], _attr_1: {})
+     ns2:cmisObjectParentsType(object: ns1:cmisObjectType, relativePathSegment: xsd:string, _value_1: ANY[], _attr_1: {})
+     ns2:cmisRepositoryEntryType(repositoryId: xsd:string, repositoryName: xsd:string, _value_1: ANY[], _attr_1: {})
+     ns2:cmisTypeContainer(type: ns1:cmisTypeDefinitionType, children: ns2:cmisTypeContainer[], _value_1: ANY[], _attr_1: {})
+     ns2:cmisTypeDefinitionListType(types: ns1:cmisTypeDefinitionType[], hasMoreItems: xsd:boolean, numItems: xsd:integer, _value_1: ANY[], _attr_1: {})
+     ns2:enumServiceException
+     xsd:ENTITIES
+     xsd:ENTITY
+     xsd:ID
+     xsd:IDREF
+     xsd:IDREFS
+     xsd:NCName
+     xsd:NMTOKEN
+     xsd:NMTOKENS
+     xsd:NOTATION
+     xsd:Name
+     xsd:QName
+     xsd:anySimpleType
+     xsd:anyURI
+     xsd:base64Binary
+     xsd:boolean
+     xsd:byte
+     xsd:date
+     xsd:dateTime
+     xsd:decimal
+     xsd:double
+     xsd:duration
+     xsd:float
+     xsd:gDay
+     xsd:gMonth
+     xsd:gMonthDay
+     xsd:gYear
+     xsd:gYearMonth
+     xsd:hexBinary
+     xsd:int
+     xsd:integer
+     xsd:language
+     xsd:long
+     xsd:negativeInteger
+     xsd:nonNegativeInteger
+     xsd:nonPositiveInteger
+     xsd:normalizedString
+     xsd:positiveInteger
+     xsd:short
+     xsd:string
+     xsd:time
+     xsd:token
+     xsd:unsignedByte
+     xsd:unsignedInt
+     xsd:unsignedLong
+     xsd:unsignedShort
+
+Bindings:
+     Soap11Binding: {http://docs.oasis-open.org/ns/cmis/ws/200908/}ACLServicePortBinding
+     Soap11Binding: {http://docs.oasis-open.org/ns/cmis/ws/200908/}DiscoveryServicePortBinding
+     Soap11Binding: {http://docs.oasis-open.org/ns/cmis/ws/200908/}MultiFilingServicePortBinding
+     Soap11Binding: {http://docs.oasis-open.org/ns/cmis/ws/200908/}NavigationServicePortBinding
+     Soap11Binding: {http://docs.oasis-open.org/ns/cmis/ws/200908/}ObjectServicePortBinding
+     Soap11Binding: {http://docs.oasis-open.org/ns/cmis/ws/200908/}PolicyServicePortBinding
+     Soap11Binding: {http://docs.oasis-open.org/ns/cmis/ws/200908/}RelationshipServicePortBinding
+     Soap11Binding: {http://docs.oasis-open.org/ns/cmis/ws/200908/}RepositoryServicePortBinding
+     Soap11Binding: {http://docs.oasis-open.org/ns/cmis/ws/200908/}VersioningServicePortBinding
+
+Service: DiscoveryService
+     Port: DiscoveryServicePort (Soap11Binding: {http://docs.oasis-open.org/ns/cmis/ws/200908/}DiscoveryServicePortBinding)
+         Operations:
+            getContentChanges(repositoryId: xsd:string, changeLogToken: xsd:string, includeProperties: xsd:boolean, filter: xsd:string, includePolicyIds: xsd:boolean, includeACL: xsd:boolean, maxItems: xsd:integer, extension: ns2:cmisExtensionType) -> objects: ns2:cmisObjectListType, changeLogToken: xsd:string
+            query(repositoryId: xsd:string, statement: xsd:string, searchAllVersions: xsd:boolean, includeAllowableActions: xsd:boolean, includeRelationships: ns1:enumIncludeRelationships, renditionFilter: xsd:string, maxItems: xsd:integer, skipCount: xsd:integer, extension: ns2:cmisExtensionType, _attr_1: {}) -> objects: ns2:cmisObjectListType
+
+Service: MultiFilingService
+     Port: MultiFilingServicePort (Soap11Binding: {http://docs.oasis-open.org/ns/cmis/ws/200908/}MultiFilingServicePortBinding)
+         Operations:
+            addObjectToFolder(repositoryId: xsd:string, objectId: xsd:string, folderId: xsd:string, allVersions: xsd:boolean, extension: ns2:cmisExtensionType) -> extension: ns2:cmisExtensionType
+            removeObjectFromFolder(repositoryId: xsd:string, objectId: xsd:string, folderId: xsd:string, extension: ns2:cmisExtensionType) -> extension: ns2:cmisExtensionType
+
+Service: NavigationService
+     Port: NavigationServicePort (Soap11Binding: {http://docs.oasis-open.org/ns/cmis/ws/200908/}NavigationServicePortBinding)
+         Operations:
+            getCheckedOutDocs(repositoryId: xsd:string, folderId: xsd:string, filter: xsd:string, orderBy: xsd:string, includeAllowableActions: xsd:boolean, includeRelationships: ns1:enumIncludeRelationships, renditionFilter: xsd:string, maxItems: xsd:integer, skipCount: xsd:integer, extension: ns2:cmisExtensionType) -> objects: ns2:cmisObjectListType
+            getChildren(repositoryId: xsd:string, folderId: xsd:string, filter: xsd:string, orderBy: xsd:string, includeAllowableActions: xsd:boolean, includeRelationships: ns1:enumIncludeRelationships, renditionFilter: xsd:string, includePathSegment: xsd:boolean, maxItems: xsd:integer, skipCount: xsd:integer, extension: ns2:cmisExtensionType) -> objects: ns2:cmisObjectInFolderListType
+            getDescendants(repositoryId: xsd:string, folderId: xsd:string, depth: xsd:integer, filter: xsd:string, includeAllowableActions: xsd:boolean, includeRelationships: ns1:enumIncludeRelationships, renditionFilter: xsd:string, includePathSegment: xsd:boolean, extension: ns2:cmisExtensionType) -> objects: ns2:cmisObjectInFolderContainerType[]
+            getFolderParent(repositoryId: xsd:string, folderId: xsd:string, filter: xsd:string, extension: ns2:cmisExtensionType) -> object: ns1:cmisObjectType
+            getFolderTree(repositoryId: xsd:string, folderId: xsd:string, depth: xsd:integer, filter: xsd:string, includeAllowableActions: xsd:boolean, includeRelationships: ns1:enumIncludeRelationships, renditionFilter: xsd:string, includePathSegment: xsd:boolean, extension: ns2:cmisExtensionType) -> objects: ns2:cmisObjectInFolderContainerType[]
+            getObjectParents(repositoryId: xsd:string, objectId: xsd:string, filter: xsd:string, includeAllowableActions: xsd:boolean, includeRelationships: ns1:enumIncludeRelationships, renditionFilter: xsd:string, includeRelativePathSegment: xsd:boolean, extension: ns2:cmisExtensionType) -> parents: ns2:cmisObjectParentsType[]
+
+Service: ObjectService
+     Port: ObjectServicePort (Soap11Binding: {http://docs.oasis-open.org/ns/cmis/ws/200908/}ObjectServicePortBinding)
+         Operations:
+            createDocument(repositoryId: xsd:string, properties: ns1:cmisPropertiesType, folderId: xsd:string, contentStream: ns2:cmisContentStreamType, versioningState: ns1:enumVersioningState, policies: xsd:string[], addACEs: ns1:cmisAccessControlListType, removeACEs: ns1:cmisAccessControlListType, extension: ns2:cmisExtensionType) -> objectId: xsd:string, extension: ns2:cmisExtensionType
+            createDocumentFromSource(repositoryId: xsd:string, sourceId: xsd:string, properties: ns1:cmisPropertiesType, folderId: xsd:string, versioningState: ns1:enumVersioningState, policies: xsd:string[], addACEs: ns1:cmisAccessControlListType, removeACEs: ns1:cmisAccessControlListType, extension: ns2:cmisExtensionType) -> objectId: xsd:string, extension: ns2:cmisExtensionType
+            createFolder(repositoryId: xsd:string, properties: ns1:cmisPropertiesType, folderId: xsd:string, policies: xsd:string[], addACEs: ns1:cmisAccessControlListType, removeACEs: ns1:cmisAccessControlListType, extension: ns2:cmisExtensionType) -> objectId: xsd:string, extension: ns2:cmisExtensionType
+            createPolicy(repositoryId: xsd:string, properties: ns1:cmisPropertiesType, folderId: xsd:string, policies: xsd:string[], addACEs: ns1:cmisAccessControlListType, removeACEs: ns1:cmisAccessControlListType, extension: ns2:cmisExtensionType) -> objectId: xsd:string, extension: ns2:cmisExtensionType
+            createRelationship(repositoryId: xsd:string, properties: ns1:cmisPropertiesType, policies: xsd:string[], addACEs: ns1:cmisAccessControlListType, removeACEs: ns1:cmisAccessControlListType, extension: ns2:cmisExtensionType) -> objectId: xsd:string, extension: ns2:cmisExtensionType
+            deleteContentStream(repositoryId: xsd:string, objectId: xsd:string, changeToken: xsd:string, extension: ns2:cmisExtensionType) -> objectId: xsd:string, changeToken: xsd:string, extension: ns2:cmisExtensionType
+            deleteObject(repositoryId: xsd:string, objectId: xsd:string, allVersions: xsd:boolean, extension: ns2:cmisExtensionType) -> extension: ns2:cmisExtensionType
+            deleteTree(repositoryId: xsd:string, folderId: xsd:string, allVersions: xsd:boolean, unfileObjects: ns1:enumUnfileObject, continueOnFailure: xsd:boolean, extension: ns2:cmisExtensionType) -> failedToDelete: {objectIds: xsd:string[], _value_1: ANY[]}
+            getAllowableActions(repositoryId: xsd:string, objectId: xsd:string, extension: ns2:cmisExtensionType) -> allowableActions: ns1:cmisAllowableActionsType
+            getContentStream(repositoryId: xsd:string, objectId: xsd:string, streamId: xsd:string, offset: xsd:integer, length: xsd:integer, extension: ns2:cmisExtensionType) -> contentStream: ns2:cmisContentStreamType
+            getObject(repositoryId: xsd:string, objectId: xsd:string, filter: xsd:string, includeAllowableActions: xsd:boolean, includeRelationships: ns1:enumIncludeRelationships, renditionFilter: xsd:string, includePolicyIds: xsd:boolean, includeACL: xsd:boolean, extension: ns2:cmisExtensionType) -> object: ns1:cmisObjectType
+            getObjectByPath(repositoryId: xsd:string, path: xsd:string, filter: xsd:string, includeAllowableActions: xsd:boolean, includeRelationships: ns1:enumIncludeRelationships, renditionFilter: xsd:string, includePolicyIds: xsd:boolean, includeACL: xsd:boolean, extension: ns2:cmisExtensionType) -> object: ns1:cmisObjectType
+            getProperties(repositoryId: xsd:string, objectId: xsd:string, filter: xsd:string, extension: ns2:cmisExtensionType) -> properties: ns1:cmisPropertiesType
+            getRenditions(repositoryId: xsd:string, objectId: xsd:string, renditionFilter: xsd:string, maxItems: xsd:integer, skipCount: xsd:integer, extension: ns2:cmisExtensionType) -> renditions: ns1:cmisRenditionType[]
+            moveObject(repositoryId: xsd:string, objectId: xsd:string, targetFolderId: xsd:string, sourceFolderId: xsd:string, extension: ns2:cmisExtensionType) -> objectId: xsd:string, extension: ns2:cmisExtensionType
+            setContentStream(repositoryId: xsd:string, objectId: xsd:string, overwriteFlag: xsd:boolean, changeToken: xsd:string, contentStream: ns2:cmisContentStreamType, extension: ns2:cmisExtensionType) -> objectId: xsd:string, changeToken: xsd:string, extension: ns2:cmisExtensionType
+            updateProperties(repositoryId: xsd:string, objectId: xsd:string, changeToken: xsd:string, properties: ns1:cmisPropertiesType, extension: ns2:cmisExtensionType) -> objectId: xsd:string, changeToken: xsd:string, extension: ns2:cmisExtensionType
+
+Service: PolicyService
+     Port: PolicyServicePort (Soap11Binding: {http://docs.oasis-open.org/ns/cmis/ws/200908/}PolicyServicePortBinding)
+         Operations:
+            applyPolicy(repositoryId: xsd:string, policyId: xsd:string, objectId: xsd:string, extension: ns2:cmisExtensionType) -> extension: ns2:cmisExtensionType
+            getAppliedPolicies(repositoryId: xsd:string, objectId: xsd:string, filter: xsd:string, extension: ns2:cmisExtensionType) -> objects: ns1:cmisObjectType[]
+            removePolicy(repositoryId: xsd:string, policyId: xsd:string, objectId: xsd:string, extension: ns2:cmisExtensionType) -> extension: ns2:cmisExtensionType
+
+Service: RelationshipService
+     Port: RelationshipServicePort (Soap11Binding: {http://docs.oasis-open.org/ns/cmis/ws/200908/}RelationshipServicePortBinding)
+         Operations:
+            getObjectRelationships(repositoryId: xsd:string, objectId: xsd:string, includeSubRelationshipTypes: xsd:boolean, relationshipDirection: ns1:enumRelationshipDirection, typeId: xsd:string, filter: xsd:string, includeAllowableActions: xsd:boolean, maxItems: xsd:integer, skipCount: xsd:integer, extension: ns2:cmisExtensionType) -> objects: ns2:cmisObjectListType
+
+Service: RepositoryService
+     Port: RepositoryServicePort (Soap11Binding: {http://docs.oasis-open.org/ns/cmis/ws/200908/}RepositoryServicePortBinding)
+         Operations:
+            getRepositories(extension: ns2:cmisExtensionType) -> repositories: ns2:cmisRepositoryEntryType[]
+            getRepositoryInfo(repositoryId: xsd:string, extension: ns2:cmisExtensionType) -> repositoryInfo: ns1:cmisRepositoryInfoType
+            getTypeChildren(repositoryId: xsd:string, typeId: xsd:string, includePropertyDefinitions: xsd:boolean, maxItems: xsd:integer, skipCount: xsd:integer, extension: ns2:cmisExtensionType) -> types: ns2:cmisTypeDefinitionListType
+            getTypeDefinition(repositoryId: xsd:string, typeId: xsd:string, extension: ns2:cmisExtensionType) -> type: ns1:cmisTypeDefinitionType
+            getTypeDescendants(repositoryId: xsd:string, typeId: xsd:string, depth: xsd:integer, includePropertyDefinitions: xsd:boolean, extension: ns2:cmisExtensionType) -> types: ns2:cmisTypeContainer[]
+
+Service: VersioningService
+     Port: VersioningServicePort (Soap11Binding: {http://docs.oasis-open.org/ns/cmis/ws/200908/}VersioningServicePortBinding)
+         Operations:
+            cancelCheckOut(repositoryId: xsd:string, objectId: xsd:string, extension: ns2:cmisExtensionType) -> extension: ns2:cmisExtensionType
+            checkIn(repositoryId: xsd:string, objectId: xsd:string, major: xsd:boolean, properties: ns1:cmisPropertiesType, contentStream: ns2:cmisContentStreamType, checkinComment: xsd:string, policies: xsd:string[], addACEs: ns1:cmisAccessControlListType, removeACEs: ns1:cmisAccessControlListType, extension: ns2:cmisExtensionType) -> objectId: xsd:string, extension: ns2:cmisExtensionType
+            checkOut(repositoryId: xsd:string, objectId: xsd:string, extension: ns2:cmisExtensionType) -> objectId: xsd:string, contentCopied: xsd:boolean, extension: ns2:cmisExtensionType
+            getAllVersions(repositoryId: xsd:string, objectId: xsd:string, filter: xsd:string, includeAllowableActions: xsd:boolean, extension: ns2:cmisExtensionType) -> objects: ns1:cmisObjectType[]
+            getObjectOfLatestVersion(repositoryId: xsd:string, objectId: xsd:string, major: xsd:boolean, filter: xsd:string, includeAllowableActions: xsd:boolean, includeRelationships: ns1:enumIncludeRelationships, renditionFilter: xsd:string, includePolicyIds: xsd:boolean, includeACL: xsd:boolean, extension: ns2:cmisExtensionType) -> object: ns1:cmisObjectType
+            getPropertiesOfLatestVersion(repositoryId: xsd:string, objectId: xsd:string, major: xsd:boolean, filter: xsd:string, extension: ns2:cmisExtensionType) -> properties: ns1:cmisPropertiesType
+
+Service: ACLService
+     Port: ACLServicePort (Soap11Binding: {http://docs.oasis-open.org/ns/cmis/ws/200908/}ACLServicePortBinding)
+         Operations:
+            applyACL(repositoryId: xsd:string, objectId: xsd:string, addACEs: ns1:cmisAccessControlListType, removeACEs: ns1:cmisAccessControlListType, ACLPropagation: ns1:enumACLPropagation, extension: ns2:cmisExtensionType) -> ACL: ns2:cmisACLType
+            getACL(repositoryId: xsd:string, objectId: xsd:string, onlyBasicPermissions: xsd:boolean, extension: ns2:cmisExtensionType) -> ACL: ns2:cmisACLType
+
